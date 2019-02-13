@@ -190,7 +190,9 @@ function ep_plugin_meta_links( $links, $file ) {
   if ( $file == $plugin ) {
     return array_merge(
       $links,
-      array( '<a href="https://s3.amazonaws.com/341public/LATEST/versioninfo/ep-changelog.html" target="_blank">Changelog</a>','<a href="http://guides.pizazzwp.com/excerptsplus/about-excerpts/" target="_blank">Online guide</a>','<a href="mailto:support@pizazzwp.com" target=_blank>User support</a>' )
+      array(
+      	'<a href="http://guides.pizazzwp.com/excerptsplus/about-excerpts/" target="_blank">Online guide</a>',
+      	'<a href="mailto:support@padmaunlimited.com" target=_blank>User support</a>' )
     );
   }
   return $links;
