@@ -4,7 +4,7 @@ Plugin Name:    Padma ExcerptsPlus
 Plugin URI:     https://padmaunlimited/plugins/padma-excerptsplus
 Description:    ExcerptsPlus is the Swiss Army Knife of content display, providing flexible and advanced content display. Adds a block that provides many more excerpt and content display options. Can be used to setup magazine layouts, featured post sliders, and even simple image galleries. In conjunction with custom posts types can create almost anything! Based on Pizazz ExcerptsPlus 3.4.14 of Chris Howard.
 
-Version:        0.0.1
+Version:        1.0.0
 Author:         Padma Unlimited Team
 Author URI:     https://www.padmaunlimited.com/
 License:        GPL2
@@ -196,15 +196,4 @@ function ep_plugin_meta_links( $links, $file ) {
     );
   }
   return $links;
-}
-
-
-// Updates
-if(is_admin()){
-    add_action('after_setup_theme', 'padma_excerptplus_updates');
-    function padma_excerptplus_updates(){
-        if ( ! empty ( $GLOBALS[ 'PadmaUpdater' ] ) ){
-            $GLOBALS[ 'PadmaUpdater' ]->updater('padma-excerptsplus',__DIR__);
-        }
-    }
 }
