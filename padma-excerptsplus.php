@@ -76,12 +76,37 @@ function ep_register_block() {
 	}
 	EPFunctions::php_debug('ExcerptsPlus v' . EPVERSION);
 
-	require EP_BLOCK_PATH . '/ep2_display.php';
+	//require EP_BLOCK_PATH . '/ep2_display.php';
 	require EP_BLOCK_PATH . '/ep2_options.php';
 
 	add_theme_support('post-formats', array('aside', 'gallery'));
 
-	return padma_register_block('PadmaExcerptsPBlock', substr(WP_PLUGIN_URL . '/' . str_replace(basename(__FILE__), '', plugin_basename(__FILE__)), 0, -1));
+	
+	$class = 'PadmaExcerptsPBlock';
+	$block_type_url = substr(WP_PLUGIN_URL . '/' . str_replace(basename(__FILE__), '', plugin_basename(__FILE__)), 0, -1);		
+	$class_file = __DIR__ . '/ep2_display.php';
+	$icons = array(
+			'path' => __DIR__,
+			'url' => $block_type_url
+		);
+
+	padma_register_block(
+		$class,
+		$block_type_url,
+		$class_file,
+		$icons
+	);
+	
+
+	/**
+	 *
+	 * Check if there is the Padma Loader
+	 *
+	 */		
+	if ( version_compare(PADMA_VERSION, '1.1.70', '<=') ){			
+		include_once $class_file;
+	}
+
 }
 
 register_activation_hook(__FILE__, 'ep_activate');
